@@ -1,0 +1,22 @@
+server:
+  port: 8081
+
+spring:
+  jackson:
+    date-format: com.edemidov.alfa.config.RFC3339DateFormat
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+spring.cloud:
+  stream:
+    defaultBinder: kafka
+    kafka:
+      binder:
+        brokers: 178.154.247.16:29092
+        autoCreateTopics: false
+    default:
+      contentType: text/plain
+      group: ${spring.application.instance_name}-consumers12
+    bindings:
+      dataInputChannel:
+        destination: RAW_PAYMENTS
